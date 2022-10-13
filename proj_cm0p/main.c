@@ -42,22 +42,29 @@
 
 #include "cy_pdl.h"
 #include "cyhal.h"
+#include "cybsp.h"
 
 #define CM7_DUAL    1
 
 int main(void)
 {
+    cy_rslt_t result;
+
+    /* Initialize the device and board peripherals */
+    result = cybsp_init() ;
+    if (result != CY_RSLT_SUCCESS)
+    {
+        CY_ASSERT(0);
+    }
+
     /* enable interrupts */
     __enable_irq();
 
     /* Enable CM7_0/1. CY_CORTEX_M7_APPL_ADDR is calculated in linker script, check it in case of problems. */
     Cy_SysEnableCM7(CORE_CM7_0, CY_CORTEX_M7_0_APPL_ADDR);
 #if CM7_DUAL
-    Cy_SysLib_Delay(1000); /* To avoid race between CM7's while initializing the clocks */
     Cy_SysEnableCM7(CORE_CM7_1, CY_CORTEX_M7_1_APPL_ADDR);
 #endif /* CM7_DUAL */
-
-    Cy_SysPm_CpuSleepOnExit(true);
 
     for(;;)
     {

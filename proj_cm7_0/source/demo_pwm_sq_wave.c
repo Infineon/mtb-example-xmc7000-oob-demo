@@ -92,8 +92,10 @@ int main_pwm_square_wave(void)
     cy_rslt_t result;
 
     printf("****************** Running PWM square-wave output demo ******************\r\n");
-    printf("In this demo, the PWM output of 50%% duty cycle at 1 Hz generated on pin P16_2\r\n");
-    printf("(also connected to USER LED2). This pin is also available on J32.10 for measurement. \r\n");
+    printf("In this demo, the PWM output of 50%% duty cycle at 1 Hz generated on USER LED2\r\n");
+#ifdef KIT_XMC72
+    printf("The PWM output is routed to P16_2 which is available on J32.10 for measurement\r\n");
+#endif
     printf("Press the USER BTN1 or USER BTN2 button to switch the PWM frequency at 1 Hz, 10 Hz, 100 Hz, \r\n");
     printf("1 kHz, 10 kHz, 100 kHz, or 1 MHz. The USER LED2 will blink depending on the selected frequency. \r\n");
     printf("\r\n");

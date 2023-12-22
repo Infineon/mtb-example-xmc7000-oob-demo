@@ -87,12 +87,10 @@ int main_gpio_interrupt(void)
 
     printf("****************** Running GPIO interrupt demo ******************\r\n");
     printf("GPIO Interrupt demo started successfully. \r\n");
-    printf("Press the USER BTN1 button to turn off USER LEDs and press the USER BTN2 button to turn on USER LEDs. \r\n");
+    printf("Press the USER BTN1 button to turn off USER LED and press the USER BTN2 button to turn on USER LED. \r\n");
     printf("\r\n");
     /* Initialize the User LED */
     cyhal_gpio_init(CYBSP_USER_LED1, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
-    cyhal_gpio_init(CYBSP_USER_LED2, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
-    cyhal_gpio_init(CYBSP_USER_LED3, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
 
     /* Initialize the user button */
     result = cyhal_gpio_init(CYBSP_USER_BTN1, CYHAL_GPIO_DIR_INPUT,
@@ -140,9 +138,7 @@ int main_gpio_interrupt(void)
                 /* Enable interrupt */
                 cyhal_gpio_register_callback(CYBSP_USER_BTN1, &gpio1_btn_callback_data);
                 cyhal_gpio_write(CYBSP_USER_LED1, LED_OFF);
-                cyhal_gpio_write(CYBSP_USER_LED2, LED_OFF);
-                cyhal_gpio_write(CYBSP_USER_LED3, LED_OFF);
-                printf("All the three USER LEDs turned OFF\r\n");
+                printf("USER LED turned OFF\r\n");
             }
         }
         if (true == gpio2_intr_flag)
@@ -162,9 +158,7 @@ int main_gpio_interrupt(void)
                 /* Enable interrupt */
                 cyhal_gpio_register_callback(CYBSP_USER_BTN2, &gpio2_btn_callback_data);
                 cyhal_gpio_write(CYBSP_USER_LED1, LED_ON);
-                cyhal_gpio_write(CYBSP_USER_LED2, LED_ON);
-                cyhal_gpio_write(CYBSP_USER_LED3, LED_ON);
-                printf("All the three USER LEDs turned ON\r\n");
+                printf("USER LED turned ON\r\n");
             }
 
         }
@@ -173,8 +167,6 @@ int main_gpio_interrupt(void)
     cyhal_gpio_free(CYBSP_USER_BTN1);
     cyhal_gpio_free(CYBSP_USER_BTN2);
     cyhal_gpio_free(CYBSP_USER_LED1);
-    cyhal_gpio_free(CYBSP_USER_LED2);
-    cyhal_gpio_free(CYBSP_USER_LED3);
 
     return 0;
 }

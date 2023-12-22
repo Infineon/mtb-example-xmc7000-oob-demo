@@ -63,6 +63,20 @@
 #define LED_ON                            (0)
 #define LED_OFF                           (1)
 
+#ifdef XMC7200D_E272K8384
+#define KIT_XMC72
+
+#elif defined XMC7100D_F176K4160
+#define KIT_XMC71_V1
+
+#elif defined CYT4BFBCHE
+#define KIT_T2GBH
+
+#elif defined XMC7100D_F100K4160
+#define KIT_XMC71_V2
+#endif
+
+
 /*******************************************************************************
 * External Functions
 *******************************************************************************/

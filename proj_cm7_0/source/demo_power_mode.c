@@ -76,6 +76,12 @@ typedef enum
     SWITCH_LONG_PRESS   = 3u,
 } en_switch_event_t;
 
+#if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+#define HIB_BTN          CYBSP_USER_BTN2
+#else
+#define HIB_BTN          CYBSP_USER_BTN1
+#endif
+
 /*****************************************************************************
 * Function Prototypes
 ********************************************************************************/
@@ -118,19 +124,27 @@ int main_powermode(void)
     /* Enable global interrupts */
     __enable_irq();
 
+
     /* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */
     printf("****************** Running XMC(TM) MCU power modes demo ******************\r\n");
     printf("Switching between power modes!!!\r\n");
+#if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+    printf("Quickly press the USER BTN2 button to enter Sleep state.\r\n");
+    printf("Short press the USER BTN2 button to enter DeepSleep state.\r\n");
+    printf("Long press the USER BTN2 button to enter Hibernate state.\r\n\r\n");
+#else
     printf("Quickly press the USER BTN1 button to enter Sleep state.\r\n");
     printf("Short press the USER BTN1 button to enter DeepSleep state.\r\n");
     printf("Long press the USER BTN1 button to enter Hibernate state.\r\n\r\n");
+#endif
     printf("\r\n");
 
 
+
     /* Initialize the User Button */
-    cyhal_gpio_init(CYBSP_USER_BTN1, CYHAL_GPIO_DIR_INPUT, CYHAL_GPIO_DRIVE_PULLUP, CYBSP_BTN_OFF);
+    cyhal_gpio_init(HIB_BTN, CYHAL_GPIO_DIR_INPUT, CYHAL_GPIO_DRIVE_PULLUP, CYBSP_BTN_OFF);
     /* Enable the GPIO interrupt to wake-up the device */
-    cyhal_gpio_enable_event(CYBSP_USER_BTN1, CYHAL_GPIO_IRQ_FALL, CYHAL_ISR_PRIORITY_DEFAULT, true);
+    cyhal_gpio_enable_event(HIB_BTN, CYHAL_GPIO_IRQ_FALL, CYHAL_ISR_PRIORITY_DEFAULT, true);
 
     /* Initialize the PWM to control LED brightness */
     cyhal_pwm_init(&pwm, CYBSP_USER_LED, NULL);
@@ -167,8 +181,13 @@ int main_powermode(void)
         switch (get_switch_event())
         {
             case SWITCH_QUICK_PRESS:
+
                 /* Print out the information, wait a bit to UART output */
+#if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+                printf("Device entered into Sleep state. Quickly press the USER BTN2 button to return to Active state.\r\n");
+#else
                 printf("Device entered into Sleep state. Quickly press the USER BTN1 button to return to Active state.\r\n");
+#endif
                 cyhal_system_delay_ms(SHORT_GLITCH_DELAY_MS);
 
                 /* Go to sleep */
@@ -181,7 +200,11 @@ int main_powermode(void)
 
             case SWITCH_SHORT_PRESS:
                 /* Print out the information, wait a bit to UART output */
+#if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+                printf("Device entered into DeepSleep state. Quickly press the USER BTN2 button to return to Active state.\r\n");
+#else
                 printf("Device entered into DeepSleep state. Quickly press the USER BTN1 button to return to Active state.\r\n");
+#endif
                 cyhal_system_delay_ms(SHORT_GLITCH_DELAY_MS);
 
                 /* Go to deep sleep */
@@ -194,7 +217,11 @@ int main_powermode(void)
 
             case SWITCH_LONG_PRESS:
                 /* Print out the information, wait a bit to UART output */
+#if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+                printf("Device entered into Hibernate state. Quickly press the USER BTN2 button to wake-up from Hibernate state, and then the MCU resets.\r\n");
+#else
                 printf("Device entered into Hibernate state. Quickly press the USER BTN1 button to wake-up from Hibernate state, and then the MCU resets.\r\n");
+#endif
                 cyhal_system_delay_ms(SHORT_GLITCH_DELAY_MS);
 
                 /* Go to hibernate and Configure a low logic level for the first wakeup-pin */
@@ -210,7 +237,7 @@ int main_powermode(void)
     cyhal_syspm_unregister_callback(&pwm_callback);
     /* Un-initialize the User buttons and PWM*/
     cyhal_pwm_free(&pwm);
-    cyhal_gpio_free(CYBSP_USER_BTN1);
+    cyhal_gpio_free(HIB_BTN);
     cyhal_gpio_free(CYBSP_USER_LED);
     return 0;
 }
@@ -235,7 +262,7 @@ en_switch_event_t get_switch_event(void)
     uint32_t pressCount = 0;
 
     /* Check if User button is pressed */
-    while (cyhal_gpio_read(CYBSP_USER_BTN1) == CYBSP_BTN_PRESSED)
+    while (cyhal_gpio_read(HIB_BTN) == CYBSP_BTN_PRESSED)
     {
         /* Wait for 10 ms */
         cyhal_system_delay_ms(10);

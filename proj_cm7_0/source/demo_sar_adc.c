@@ -56,7 +56,7 @@
 * Macros
 *******************************************************************************/
 /* Channel 0 input pin */
-#define VPLUS_CHANNEL_0             (P6_6)
+#define VPLUS_CHANNEL_0             CYBSP_POT
 
 
 /*******************************************************************************
@@ -117,7 +117,7 @@ int main_sar_adc(void)
     /* Print message */
     printf("****************** Running SAR ADC basic demo ******************\r\n");
     printf("In this demo, the ADC is configured in single channel configuration. \r\n");
-    printf("Rotate the potentiometer and observe the ADC input voltage change on pin P6_6. \r\n");
+    printf("Rotate the potentiometer and observe the ADC input voltage change. \r\n");
     printf("\r\n");
 
     /* Initialize Channel 0 */

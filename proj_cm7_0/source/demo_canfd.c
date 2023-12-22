@@ -58,7 +58,11 @@
 
 
 /* CAN channel number */
+# if defined(KIT_XMC71_V1) || defined(KIT_XMC71_V2)
+#define CAN_HW_CHANNEL          0
+#else
 #define CAN_HW_CHANNEL          1
+#endif
 #define CAN_BUFFER_INDEX        0
 /* CAN address*/
 #define CAN_ID                  1
@@ -126,13 +130,12 @@ int main_canfd(void)
 
     printf("****************** Running CAN FD loopback demo ******************\r\n");
     printf("In this demo, to send 8-bytes CAN FD frame, connect the CAN FD analyzer \r\n");
-    printf("or another kit to J19 header and press the USER BTN1 button. Also, it can \r\n");
-    printf("receive CAN FD data and print the received data over UART serial terminal.\r\n");
+    printf("or another kit and press the USER BTN1 button. Also, it can \r\n");
+    printf("receive CAN FD data and print the received data over UART serial terminal. \r\n");
     printf("\r\n");
-    printf("Note 1: The length of received data can only be less than or equal to 8-bytes.\r\n");
+    printf("Note 1: The length of received data can only be less than or equal to 8-bytes. \r\n");
     printf("\r\n");
-    printf("Note 2: If you use two XMC7200 evaluation kits to test this demo, press the reset \r\n");
-    printf("button on both the kits to stop the communication.\r\n");
+    printf("Note 2: Press the reset button on both the kits to stop the communication. \r\n");
     printf("\r\n");
 
     /* Setting device Identifier and send buffer*/
@@ -140,14 +143,14 @@ int main_canfd(void)
     CANFD_txBuffer_0.data_area_f = (uint32_t *)canfd_data_buffer;
     /*Initialize USER_BTN1*/
     button1_initial();
-    cyhal_gpio_init(CYBSP_USER_LED3, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+    cyhal_gpio_init(CYBSP_USER_LED1, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
     cyhal_gpio_init(CYBSP_CANFD_STB, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_ON);
 
     /* Hook the interrupt service routine and enable the interrupt */
     (void) Cy_SysInt_Init(&canfd_irq_cfg, &isr_canfd);
     NVIC_EnableIRQ(NvicMux2_IRQn);
 
-    status = Cy_CANFD_Init(CANFD_HW, CAN_HW_CHANNEL, &CANFD_config, 
+    status = Cy_CANFD_Init(CANFD_HW, CAN_HW_CHANNEL, &CANFD_config,
                            &canfd_context);
     if (status != CY_CANFD_SUCCESS)
     {
@@ -212,7 +215,7 @@ int main_canfd(void)
     }
     Cy_CANFD_DeInit(CANFD_HW, CAN_HW_CHANNEL, &canfd_context);
     cyhal_gpio_free(CYBSP_USER_BTN1);
-    cyhal_gpio_free(CYBSP_USER_LED3);
+    cyhal_gpio_free(CYBSP_USER_LED1);
     cyhal_gpio_free(CYBSP_CANFD_STB);
     return 0;
 }
@@ -259,7 +262,7 @@ void canfd_rx_callback (bool                        rxFIFOMsg,
         if(CY_CANFD_RTR_DATA_FRAME == basemsg->r0_f->rtr) 
         {
             /* Toggle the user LED */
-            cyhal_gpio_toggle(CYBSP_USER_LED3);
+            cyhal_gpio_toggle(CYBSP_USER_LED1);
             /* Get the CAN DLC and ID from received message */
             canfd_dlc = basemsg->r1_f->dlc;
             canfd_id  = basemsg->r0_f->id;

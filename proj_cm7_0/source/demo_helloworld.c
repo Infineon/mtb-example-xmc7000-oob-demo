@@ -1,7 +1,7 @@
 /*******************************************************************************
 * File Name:   demo_helloworld.c
 *
-* Description: This is the source code for the PSoC 6 MCU: Hello World Example
+* Description: This is the source code for the XMC7000 MCU: Hello World Example
 *              for ModusToolbox.
 *
 * Related Document: See README.md
@@ -110,7 +110,9 @@ int main_hellowrold(void)
     /* Initialize the User LED */
     cyhal_gpio_init(CYBSP_USER_LED1, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
     cyhal_gpio_init(CYBSP_USER_LED2, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+#if defined(KIT_XMC72) || defined(KIT_T2GBH)
     cyhal_gpio_init(CYBSP_USER_LED3, CYHAL_GPIO_DIR_OUTPUT, CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
+#endif
 
     /*Initialize GPIO connected to USER BTN1*/
     button1_initial();
@@ -194,10 +196,17 @@ int main_hellowrold(void)
             /* Clear the flag */
             timer_interrupt_flag = false;
             led_statecounter++;
+            #if defined(KIT_XMC72) || defined(KIT_T2GBH)
             if(led_statecounter>4)
             {
                 led_statecounter = 0;
             }
+            #else
+            if(led_statecounter>3)
+            {
+                led_statecounter = 0;
+            }
+            #endif
             /* switch the USER LED state */
             led_statemanagement(led_statecounter);
         }
@@ -208,7 +217,9 @@ int main_hellowrold(void)
     cyhal_gpio_free(CYBSP_USER_BTN2);
     cyhal_gpio_free(CYBSP_USER_LED1);
     cyhal_gpio_free(CYBSP_USER_LED2);
+#if defined(KIT_XMC72) || defined(KIT_T2GBH)
     cyhal_gpio_free(CYBSP_USER_LED3);
+# endif
     led_statecounter = 0;
 
     return 0;
@@ -307,12 +318,19 @@ static void isr_timer(void *callback_arg, cyhal_timer_event_t event)
 *******************************************************************************/
 static void led_statemanagement(uint8_t sta)
 {
+#if defined(KIT_XMC72) || defined(KIT_T2GBH)
     /* array contains three LEDs display status 000 - 001 - 010 - 100 - 111 */
     uint8_t array[] = {0,1,2,4,7};
-
+# else
+    /* array contains two LEDs display status 000 - 001 - 010 - 011 */
+    uint8_t array[] = {0,1,2,3};
+# endif
     /* Turn on/off the LED depending upon the bit set/cleared*/
     cyhal_gpio_write(CYBSP_USER_LED1, (array[sta]&0x01) ? LED_ON : LED_OFF);
     cyhal_gpio_write(CYBSP_USER_LED2, (array[sta]&0x02) ? LED_ON : LED_OFF);
+#if defined(KIT_XMC72) || defined(KIT_T2GBH)
     cyhal_gpio_write(CYBSP_USER_LED3, (array[sta]&0x04) ? LED_ON : LED_OFF);
+#endif
+
 }
 /* [] END OF FILE */

@@ -95,7 +95,7 @@ void handle_error(void)
 {
     /* Disable all interrupts. */
     __disable_irq();
-    while (1)
+    while(1)
     {
     }
 }
@@ -117,9 +117,9 @@ void startup_message(void)
 {
     /* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */
     printf("\x1b[2J\x1b[;H");
-    printf("*******************************************************************\r\n");
-    printf("** KIT_XMC72_EVK - Running the out-of-the-box (OOB) demo project **\r\n");
-    printf("*******************************************************************\r\n");
+    printf("******************************************************************\r\n");
+    printf("**  XMC7000 MCU: Running the out-of-the-box (OOB) demo project  **\r\n");
+    printf("******************************************************************\r\n");
     printf("Enter an option from 1 - 7 to run the selected demo:\r\n");
     printf("\r\n");
     printf("\r\n");
@@ -146,6 +146,10 @@ void startup_message(void)
 *  2. Show 7 demos navigation interfaces on the UART serial terminal.
 *  3. Enter the "Hello world" demo (default demo) automatically
 *  4. You can enter 1~7 key for change the demos
+*
+*  Please note that resources used for some of the demos are different for different BSPs For eg, demo_helloworld make use of 3 LEDs in case of KIT_XMC72 whereas it uses only 2 LEDs in case of KIT_XMC71.
+*  This is due to hardware limitations and not a device limitation.
+*
 *
 * Parameters:
 *  None

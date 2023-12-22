@@ -48,8 +48,8 @@
 * Macros
 *******************************************************************************/
 /* Uart pins. */
-#define DEBUG_UART_RX        (P13_0)
-#define DEBUG_UART_TX        (P13_1)
+#define DEBUG_UART_RX        CYBSP_DEBUG_UART_RX
+#define DEBUG_UART_TX        CYBSP_DEBUG_UART_TX
 
 /* Uart configuration. */ 
 #define DATA_BITS_8     8

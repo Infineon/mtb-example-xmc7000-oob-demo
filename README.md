@@ -12,11 +12,11 @@ This example is the out-of-the-box (OOB) demo project for the XMC7000 evaluation
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-xmc7000-oob-demo)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzYzNDgiLCJTcGVjIE51bWJlciI6IjAwMi0zNjM0OCIsIkRvYyBUaXRsZSI6IlhNQzcwMDAgTUNVOiBPdXQtb2YtdGhlLWJveCAoT09CKSBkZW1vIiwicmlkIjoic3VkYXJzYW5hbXNhIiwiRG9jIHZlcnNpb24iOiIyLjEuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzYzNDgiLCJTcGVjIE51bWJlciI6IjAwMi0zNjM0OCIsIkRvYyBUaXRsZSI6IlhNQzcwMDAgTUNVOiBPdXQtb2YtdGhlLWJveCAoT09CKSBkZW1vIiwicmlkIjoic3VkYXJzYW5hbXNhIiwiRG9jIHZlcnNpb24iOiIyLjEuMSIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.1 or later (tested with v3.1)
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.1 or later (tested with v3.2)
 - Programming language: C
 - Associated parts: [XMC7000 MCU](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/32-bit-xmc7000-industrial-microcontroller-arm-cortex-m7/)
 
@@ -359,6 +359,7 @@ Document title: *CE236348* – *XMC7000 MCU: Out-of-the-box (OOB) demo*
  1.1.0   | Added support for KIT_T2G-B-H_EVK 
  2.0.0   | Updated to support ModusToolbox&trade; v3.1 <br /> Added support for KIT_XMC71_EVK_LITE_V1. Updated QSPI flash demo to serial flash library. Removed support for KIT_T2G-B-H_EVK
  2.1.0   | Updated device configuration of KIT_XMC72_EVK and KIT_XMC71_EVK_LITE_V1 as per latest BSP. Added support for KIT_XMC72_EVK_MUR_43439M2
+ 2.1.1   | Disabled D-cache for XMC7000 based BSPs
 <br />
 
 All referenced product or service names and trademarks are the property of their respective owners.

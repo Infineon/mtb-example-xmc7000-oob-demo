@@ -74,7 +74,8 @@ SOURCES=
 INCLUDES=
 
 # Add additional defines to the build process (without a leading -D).
-DEFINES=
+# Disabled D-cache for XMC7000 based BSPs
+DEFINES=CY_DISABLE_XMC7000_DATA_CACHE
 
 # Select softfp or hardfp floating point. Default is softfp.
 VFP_SELECT=
@@ -112,6 +113,9 @@ else ifeq ($(TOOLCHAIN),IAR)
     LINKER_SCRIPT_EXT:=icf
 endif
 LINKER_SCRIPT=$(MTB_TOOLS__TARGET_DIR)/COMPONENT_$(CORE)/TOOLCHAIN_$(TOOLCHAIN)/linker_d.$(LINKER_SCRIPT_EXT)
+
+# Only GCC_ARM is supported for this CE
+MTB_SUPPORTED_TOOLCHAINS=GCC_ARM
 
 # Custom pre-build commands to run.
 PREBUILD=

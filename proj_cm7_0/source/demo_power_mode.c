@@ -223,7 +223,8 @@ int main_powermode(void)
                 printf("Device entered into Hibernate state. Quickly press the USER BTN1 button to wake-up from Hibernate state, and then the MCU resets.\r\n");
 #endif
                 cyhal_system_delay_ms(SHORT_GLITCH_DELAY_MS);
-
+                /* Wait until the UART Tx is empty before entering Hibernate mode */
+                while (cyhal_uart_is_tx_active(&cy_retarget_io_uart_obj));
                 /* Go to hibernate and Configure a low logic level for the first wakeup-pin */
                 cyhal_syspm_hibernate(CYHAL_SYSPM_HIBERNATE_PINA_LOW);
                 break;

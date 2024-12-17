@@ -40,6 +40,7 @@
 
 #include "print_message.h"
 #include "oob_demo.h"
+#include "cy_retarget_io.h"
 
 
 /*******************************************************************************
@@ -85,8 +86,9 @@ void uart_port_initial()
 {
     cy_rslt_t    rslt;
 
-    /* Initialize the UART Block. */
-    rslt = cyhal_uart_init(&uart_obj, DEBUG_UART_TX, DEBUG_UART_RX, NC, NC, NULL, &uart_config);
+    /* Initialize retarget-io to use the debug UART port */
+    rslt = cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
+
     if(CY_RSLT_SUCCESS != rslt)
     {
         /* Disable all interrupts. */
@@ -95,13 +97,10 @@ void uart_port_initial()
         CY_ASSERT(false);
     }
     /* The UART callback handler registration. */
-    cyhal_uart_register_callback(&uart_obj, uart_event_handler, NULL);
+    cyhal_uart_register_callback(&cy_retarget_io_uart_obj, uart_event_handler, NULL);
 
-    /* Enable required UART events. */
-    cyhal_uart_enable_event(&uart_obj,
-                            (cyhal_uart_event_t)(CYHAL_UART_IRQ_TX_DONE | CYHAL_UART_IRQ_TX_ERROR |
-                                              CYHAL_UART_IRQ_RX_DONE | CYHAL_UART_IRQ_RX_NOT_EMPTY),
-                            INT_PRIORITY, true);
+   /* Enable required UART events. */
+    cyhal_uart_enable_event(&cy_retarget_io_uart_obj,(cyhal_uart_event_t)(CYHAL_UART_IRQ_RX_DONE | CYHAL_UART_IRQ_RX_NOT_EMPTY), INT_PRIORITY, true);
 
 }
 
@@ -122,19 +121,8 @@ void uart_port_initial()
 void uart_event_handler(void* handler_arg, cyhal_uart_event_t event)
 {
     (void)handler_arg;
-    if ((event & CYHAL_UART_IRQ_TX_ERROR) == CYHAL_UART_IRQ_TX_ERROR)
-    {
-        handle_error();
-        /* An error occurred in Tx */
-        /* Insert application code to handle Tx error */
-    }
-    else if ((event & CYHAL_UART_IRQ_TX_DONE) == CYHAL_UART_IRQ_TX_DONE)
-    {
-        cyhal_uart_clear(&uart_obj);
-        /* All Tx data has been transmitted */
-        /* Insert application code to handle Tx done */
-    }
-    else if ((event & CYHAL_UART_IRQ_RX_DONE) == CYHAL_UART_IRQ_RX_DONE)
+
+    if ((event & CYHAL_UART_IRQ_RX_DONE) == CYHAL_UART_IRQ_RX_DONE)
     {
         handle_error();
         /* All Rx data has been received */
@@ -143,7 +131,7 @@ void uart_event_handler(void* handler_arg, cyhal_uart_event_t event)
     else if ((event & CYHAL_UART_IRQ_RX_NOT_EMPTY) == CYHAL_UART_IRQ_RX_NOT_EMPTY)
     {
         /* Get input command */
-        cyhal_uart_getc(&uart_obj, &recCmd, 1);
+        cyhal_uart_getc(&cy_retarget_io_uart_obj, &recCmd, 1);
 
         /* Distinguish command */
         switch(recCmd)
@@ -216,32 +204,3 @@ void uart_event_handler(void* handler_arg, cyhal_uart_event_t event)
         }
     }
 }
-
-
-/*******************************************************************************
-* Function Name: print_string
-********************************************************************************
-* Summary:
-* print string out
-*
-* Parameters:
-*  pStr: the pointer of string which will be printed out
-*
-* Return:
-*  none
-*
-*******************************************************************************/
-size_t _write(int handle, const char* buffer, size_t size)
-{
-    size_t nChars = 0;
-    if (0 != handle)
-    {
-
-    }
-
-    nChars = cyhal_uart_write_async(&uart_obj, (void*)buffer, size);
-    cyhal_system_delay_ms(UART_DELAY);
-
-    return nChars;
-}
-

@@ -57,7 +57,7 @@ VERBOSE=
 COMPONENTS=
 
 # Like COMPONENTS, but disable optional code that was enabled by default.
-DISABLE_COMPONENTS=
+DISABLE_COMPONENTS=XMC7xDUAL_CM0P_SLEEP XMC7x_CM0P_SLEEP
 
 # Set this application to run at the CM0+
 CORE=CM0P
@@ -74,8 +74,7 @@ SOURCES=
 INCLUDES=
 
 # Add additional defines to the build process (without a leading -D).
-# Disabled D-cache for XMC7000 based BSPs
-DEFINES=CY_DISABLE_XMC7000_DATA_CACHE
+DEFINES=
 
 # Select softfp or hardfp floating point. Default is softfp.
 VFP_SELECT=
@@ -143,8 +142,5 @@ CY_GETLIBS_SHARED_NAME=mtb_shared
 # The default depends on the selected TOOLCHAIN (GCC_ARM uses the ModusToolbox
 # software provided compiler by default).
 CY_COMPILER_GCC_ARM_DIR=
-
-# Only GCC_ARM is supported for this CE
-MTB_SUPPORTED_TOOLCHAINS=GCC_ARM
 
 include $(CY_TOOLS_DIR)/make/start.mk

@@ -12,12 +12,12 @@ This example is the out-of-the-box (OOB) demo project for the XMC7000 Evaluation
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-xmc7000-oob-demo)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzYzNDgiLCJTcGVjIE51bWJlciI6IjAwMi0zNjM0OCIsIkRvYyBUaXRsZSI6IlhNQzcwMDAgTUNVOiBPdXQtb2YtdGhlLWJveCAoT09CKSBkZW1vIiwicmlkIjoiY2N0YSIsIkRvYyB2ZXJzaW9uIjoiMi4yLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzYzNDgiLCJTcGVjIE51bWJlciI6IjAwMi0zNjM0OCIsIkRvYyBUaXRsZSI6IlhNQzcwMDAgTUNVOiBPdXQtb2YtdGhlLWJveCAoT09CKSBkZW1vIiwicmlkIjoiY2N0YSIsIkRvYyB2ZXJzaW9uIjoiMi4yLjEiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.1 or later (tested with v3.3)
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.1 or later (tested with v3.4)
 - Programming language: C
 - Associated parts: [XMC7000 MCU](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/32-bit-xmc7000-industrial-microcontroller-arm-cortex-m7/)
 
@@ -66,7 +66,7 @@ Connect CANL and CANH (see **Table 2**) pins of NODE-1 and NODE-2 using jumper w
 
 See the [ModusToolbox&trade; tools package installation guide](https://www.infineon.com/ModusToolboxInstallguide) for information about installing and configuring the tools package.
 
-Install a terminal emulator if you don't have one. Instructions in this document use [Tera Term](https://teratermproject.github.io/index-en.html).
+Install a terminal emulator if you do not have one. Instructions in this document use [Tera Term](https://teratermproject.github.io/index-en.html).
 
 This example requires no additional software or tools.
 
@@ -80,27 +80,27 @@ The ModusToolbox&trade; tools package provides the Project Creator as both a GUI
 
 <details><summary><b>Use Project Creator GUI</b></summary>
 
-1. Open the Project Creator GUI tool.
+1. Open the Project Creator GUI tool
 
-   There are several ways to do this, including launching it from the dashboard or from inside the Eclipse IDE. For more details, see the [Project Creator user guide](https://www.infineon.com/ModusToolboxProjectCreator) (locally available at *{ModusToolbox&trade; install directory}/tools_{version}/project-creator/docs/project-creator.pdf*).
+   There are several ways to do this, including launching it from the dashboard or from inside the Eclipse IDE. For more details, see the [Project Creator user guide](https://www.infineon.com/ModusToolboxProjectCreator) (locally available at *{ModusToolbox&trade; install directory}/tools_{version}/project-creator/docs/project-creator.pdf*)
 
-2. On the **Choose Board Support Package (BSP)** page, select a kit supported by this code example. See [Supported kits](#supported-kits-make-variable-target).
+2. On the **Choose Board Support Package (BSP)** page, select a kit supported by this code example. See [Supported kits](#supported-kits-make-variable-target)
 
-   > **Note:** To use this code example for a kit not listed here, you may need to update the source files. If the kit does not have the required resources, the application may not work.
+   > **Note:** To use this code example for a kit not listed here, you may need to update the source files. If the kit does not have the required resources, the application may not work
 
 3. On the **Select Application** page:
 
-   a. Select the **Applications(s) Root Path** and the **Target IDE**.
+   a. Select the **Applications(s) Root Path** and the **Target IDE**
 
-   > **Note:** Depending on how you open the Project Creator tool, these fields may be pre-selected for you.
+   > **Note:** Depending on how you open the Project Creator tool, these fields may be pre-selected for you
 
-   b. Select this code example from the list by enabling its check box.
+   b. Select this code example from the list by enabling its check box
 
-   > **Note:** You can narrow the list of displayed examples by typing in the filter box.
+   > **Note:** You can narrow the list of displayed examples by typing in the filter box
 
-   c. (Optional) Change the suggested **New Application Name** and **New BSP Name**.
+   c. (Optional) Change the suggested **New Application Name** and **New BSP Name**
 
-   d. Click **Create** to complete the application creation process.
+   d. Click **Create** to complete the application creation process
 
 </details>
 
@@ -155,11 +155,11 @@ For more details, see the [Visual Studio Code for ModusToolbox&trade; user guide
 </details>
 
 
-<details><summary><b>Keil µVision</b></summary>
+<details><summary><b>Arm&reg; Keil&reg; µVision&reg;</b></summary>
 
-Double-click the generated *{project-name}.cprj* file to launch the Keil µVision IDE.
+Double-click the generated *{project-name}.cprj* file to launch the Keil&reg; µVision&reg; IDE.
 
-For more details, see the [Keil µVision for ModusToolbox&trade; user guide](https://www.infineon.com/MTBuVisionUserGuide) (locally available at *{ModusToolbox&trade; install directory}/docs_{version}/mt_uvision_user_guide.pdf*).
+For more details, see the [Arm&reg; Keil&reg; µVision&reg; for ModusToolbox&trade; user guide](https://www.infineon.com/MTBuVisionUserGuide) (locally available at *{ModusToolbox&trade; install directory}/docs_{version}/mt_uvision_user_guide.pdf*).
 
 </details>
 
@@ -184,23 +184,23 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
 ## Operation
 
-1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
+1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector
 
-2. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
+2. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud
 
 3. Program the board using one of the following:
 
    <details><summary><b>Using Eclipse IDE</b></summary>
 
-      1. Select the application project in the Project Explorer.
+      1. Select the application project in the Project Explorer
 
-      2. In the **Quick Panel**, scroll down, and click **\<Application Name> Program (KitProg3_MiniProg4)**.
+      2. In the **Quick Panel**, scroll down, and click **\<Application Name> Program (KitProg3_MiniProg4)**
    </details>
 
 
    <details><summary><b>In other IDEs</b></summary>
 
-   Follow the instructions in your preferred IDE.
+   Follow the instructions in your preferred IDE
    </details>
 
 
@@ -217,38 +217,38 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
       ```
    </details>
 
-4. After programming, the application starts automatically. Confirm that the OOB code example title is displayed on the UART terminal.
+4. After programming, the application starts automatically. Confirm that the OOB code example title is displayed on the UART terminal
 
    **Figure 1. Code example titles**
 
    ![](images/ce_title.jpg)
 
 5. Enter a number from 1 to 7 to select the corresponding demo project.
-   By default, the system enters into the 'Hello world' demo. The "Running Hello world demo" title appears on the UART terminal. Press the **Enter** key to pause or resume blinking the user LED. Alternatively, use either 'USER BTN1' or 'USER BTN2' to pause or resume the blinking.
+   By default, the system enters into the 'Hello world' demo. The "Running Hello world demo" title appears on the UART terminal. Press the **Enter** key to pause or resume blinking the user LED. Alternatively, use either 'USER BTN1' or 'USER BTN2' to pause or resume the blinking
 
    **Figure 2. Hello world**
 
    ![](images/hello_world.jpg)
 
-6. Enter 2 to select the 'PWM square-wave output' demo. Press the 'USER BTN1' or 'USER BTN2' button to switch the PWM frequency at 1 Hz, 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, or 1 MHz. The 'USER LED2' will blink depending on the selected frequency.
+6. Enter 2 to select the 'PWM square-wave output' demo. Press the 'USER BTN1' or 'USER BTN2' button to switch the PWM frequency at 1 Hz, 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, or 1 MHz. The 'USER LED2' will blink depending on the selected frequency
 
    **Figure 3. PWM square-wave output**
 
    ![](images/pwm_square_wave.jpg)
 
-7. Enter 3 to select the 'GPIO interrupt' demo. Press the 'USER BTN1' button to turn off user LEDs and press the 'USER BTN2' button to turn on user LEDs.
+7. Enter 3 to select the 'GPIO interrupt' demo. Press the 'USER BTN1' button to turn off user LEDs and press the 'USER BTN2' button to turn on user LEDs
 
    **Figure 4. GPIO interrupt**
 
    ![](images/gpio_interrrupt.jpg)
    
-8. Enter 4 to select the 'SAR ADC basics' demo. Rotate the potentiometer to change the ADC input voltage, and observe the change in SAR ADC readings.
+8. Enter 4 to select the 'SAR ADC basics' demo. Rotate the potentiometer to change the ADC input voltage, and observe the change in SAR ADC readings
 
    **Figure 5. SAR ADC basic**
 
    ![](images/sar_adc.jpg)
 
-9. Enter 5 to select the 'XMC(TM) MCU power modes' demo. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to switch between the Active, Sleep, DeepSleep, and Hibernate power states. See the kit guide on how to measure the current.
+9. Enter 5 to select the 'XMC(TM) MCU power modes' demo. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to switch between the Active, Sleep, DeepSleep, and Hibernate power states. See the kit guide on how to measure the current
 
    **Figure 6. XMC&trade; MCU power modes**
 
@@ -267,29 +267,29 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
    **Operational steps:**
 
-   a. When you enter into this demo, confirm that 'USER LED1' blinks at 3 Hz (approximately). Take note of the current consumption. The device is in the Active state at this moment.
+   a. When you enter into this demo, confirm that 'USER LED1' blinks at 3 Hz (approximately). Take note of the current consumption. The device is in the Active state at this moment
 
-   b. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to enter into the Sleep power state. Observe that the 'USER LED1' is ON and dimmed. Confirm that the current consumption drops to dozens of milliamperes. The CPU is in the Sleep state at this moment.
+   b. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to enter into the Sleep power state. Observe that the 'USER LED1' is ON and dimmed. Confirm that the current consumption drops to dozens of milliamperes. The CPU is in the Sleep state at this moment
 
-   c. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to return to Active state. Observe that the 'USER LED1' blinks again.
+   c. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to return to Active state. Observe that the 'USER LED1' blinks again
 
-   d. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) for approximately one second and release it. Observe that the 'USER LED1' is OFF and that the current consumption has dropped to over a hundred. The device is in DeepSleep state at this moment.
+   d. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) for approximately one second and release it. Observe that the 'USER LED1' is OFF and that the current consumption has dropped to over a hundred. The device is in DeepSleep state at this moment
 
-   e. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to return to Active power state. Observe that the 'USER LED1' blinks again and that the current consumption has increased to the same level measured before.
+   e. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to return to Active power state. Observe that the 'USER LED1' blinks again and that the current consumption has increased to the same level measured before
 
-   f. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) for at least two seconds and release it. Observe that the 'USER LED1' is OFF and that the current consumption has dropped to about ten microampere. The device is in Hibernate state at this moment. After the steps b to f, the terminal application displays the message as shown in **Figure 6**.
+   f. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) for at least two seconds and release it. Observe that the 'USER LED1' is OFF and that the current consumption has dropped to about ten microampere. The device is in Hibernate state at this moment. After the steps b to f, the terminal application displays the message as shown in **Figure 6**
 
-   g. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to wake-up from Hibernate power state, and then the MCU resets. Observe that the "Running XMC(TM) MCU power modes demo" title appears on the UART terminal.
+   g. Press the Hibernate button ('USER BTN1' in case of KIT_XMC72_EVK, 'USER_BTN2' in case of KIT_XMC71_EVK_LITE_V1) to wake-up from Hibernate power state, and then the MCU resets. Observe that the "Running XMC(TM) MCU power modes demo" title appears on the UART terminal
 
-10. Enter 6 to select the 'QSPI memory read/write' demo, the system will erase QSPI memory, write encrypted data into QSPI memory, read encrypted data from QSPI memory, decrypt, and verify the data. Observe the 'USER LED1' to determine the status of the read write operation.
-    - 'USER LED1' is blinking: Successful operation.
-    - 'USER LED1' is always ON: Failed operation.
+10. Enter 6 to select the 'QSPI memory read/write' demo, the system will erase QSPI memory, write encrypted data into QSPI memory, read encrypted data from QSPI memory, decrypt, and verify the data. Observe the 'USER LED1' to determine the status of the read write operation
+    - 'USER LED1' is blinking: Successful operation
+    - 'USER LED1' is always ON: Failed operation
 
     **Figure 7. QSPI memory read and write**
 
     ![](images/qspi_memory.jpg)
    
-11. Enter 7 to select the 'CAN FD loopback' demo. Make the pin connection setup as described in the [Hardware setup](#hardware-setup) section. Press the 'USER BTN1' button to send CAN FD frame to CAN FD analyzer or another kit. Also, this demo can receive CAN FD data and print the received data over UART serial terminal. Each time a CAN frame is received, the 'USER LED' toggles.
+11. Enter 7 to select the 'CAN FD loopback' demo. Make the pin connection setup as described in the [Hardware setup](#hardware-setup) section. Press the 'USER BTN1' button to send CAN FD frame to CAN FD analyzer or another kit. Also, this demo can receive CAN FD data and print the received data over UART serial terminal. Each time a CAN frame is received, the 'USER LED' toggles
 
     > **Note:** If you use two evaluation kits to test this demo, change the `CAN_ID` macro from '1' to '2' in the *demo_canfd.c* file and program another kit.
    
@@ -375,7 +375,8 @@ Document title: *CE236348* – *XMC7000 MCU: Out-of-the-box (OOB) demo*
  2.0.0   | Updated to support ModusToolbox&trade; v3.1 <br> Added support for KIT_XMC71_EVK_LITE_V1. Updated QSPI flash demo to serial flash library. Removed support for KIT_T2G-B-H_EVK
  2.1.0   | Updated device configuration of KIT_XMC72_EVK and KIT_XMC71_EVK_LITE_V1 as per latest BSP. Added support for KIT_XMC72_EVK_MUR_43439M2
  2.1.1   | Disabled D-cache for XMC7000 based BSPs
- 2.2.0   | Enabled D-cache support for XMC7000 devices <br> Updated to use retarget-io library for printf operation <br> Added support for ARM and IAR compilers
+ 2.2.0   | Enabled D-cache support for XMC7000 devices <br> Updated to use retarget-io library for printf operation <br> Added support for ARM&reg; and IAR compilers
+ 2.2.1   | Added 1ms delay before enabling CM7_1 to prevent core from halting
 <br>
 
 
@@ -386,8 +387,8 @@ The Bluetooth&reg; word mark and logos are registered trademarks owned by Blueto
 
 ---------------------------------------------------------
 
-© Cypress Semiconductor Corporation, 2022-2024. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress").  This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide.  Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights.  If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress's patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products.  Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
+© Cypress Semiconductor Corporation, 2022-2025. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress").  This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide.  Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights.  If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress's patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products.  Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
 <br>
 TO THE EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS DOCUMENT OR ANY SOFTWARE OR ACCOMPANYING HARDWARE, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  No computing device can be absolutely secure.  Therefore, despite security measures implemented in Cypress hardware or software products, Cypress shall have no liability arising out of any security breach, such as unauthorized access to or use of a Cypress product. CYPRESS DOES NOT REPRESENT, WARRANT, OR GUARANTEE THAT CYPRESS PRODUCTS, OR SYSTEMS CREATED USING CYPRESS PRODUCTS, WILL BE FREE FROM CORRUPTION, ATTACK, VIRUSES, INTERFERENCE, HACKING, DATA LOSS OR THEFT, OR OTHER SECURITY INTRUSION (collectively, "Security Breach").  Cypress disclaims any liability relating to any Security Breach, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any Security Breach.  In addition, the products described in these materials may contain design defects or errors known as errata which may cause the product to deviate from published specifications. To the extent permitted by applicable law, Cypress reserves the right to make changes to this document without further notice. Cypress does not assume any liability arising out of the application or use of any product or circuit described in this document. Any information provided in this document, including any sample design information or programming code, is provided only for reference purposes.  It is the responsibility of the user of this document to properly design, program, and test the functionality and safety of any application made of this information and any resulting product.  "High-Risk Device" means any device or system whose failure could cause personal injury, death, or property damage.  Examples of High-Risk Devices are weapons, nuclear installations, surgical implants, and other medical devices.  "Critical Component" means any component of a High-Risk Device whose failure to perform can be reasonably expected to cause, directly or indirectly, the failure of the High-Risk Device, or to affect its safety or effectiveness.  Cypress is not liable, in whole or in part, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any use of a Cypress product as a Critical Component in a High-Risk Device. You shall indemnify and hold Cypress, including its affiliates, and its directors, officers, employees, agents, distributors, and assigns harmless from and against all claims, costs, damages, and expenses, arising out of any claim, including claims for product liability, personal injury or death, or property damage arising from any use of a Cypress product as a Critical Component in a High-Risk Device. Cypress products are not intended or authorized for use as a Critical Component in any High-Risk Device except to the limited extent that (i) Cypress's published data sheet for the product explicitly states Cypress has qualified the product for use in a specific High-Risk Device, or (ii) Cypress has given you advance written authorization to use the product as a Critical Component in the specific High-Risk Device and you have signed a separate indemnification agreement.
 <br>
-Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.
+Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSOC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.

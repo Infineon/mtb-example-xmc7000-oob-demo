@@ -8,7 +8,7 @@
 *
 *
 *******************************************************************************
-* Copyright 2022-2024, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2022-2025, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -63,6 +63,7 @@ int main(void)
     /* Enable CM7_0/1. CY_CORTEX_M7_APPL_ADDR is calculated in linker script, check it in case of problems. */
     Cy_SysEnableCM7(CORE_CM7_0, CY_CORTEX_M7_0_APPL_ADDR);
 #if CM7_DUAL
+    cyhal_system_delay_ms(1);
     Cy_SysEnableCM7(CORE_CM7_1, CY_CORTEX_M7_1_APPL_ADDR);
 #endif /* CM7_DUAL */
 
